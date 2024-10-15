@@ -1,4 +1,4 @@
-# Data Structures: Stack, Queue, Tree, LinkedList
+# Data Structures(CSD201): Stack, Queue, Tree, LinkedList
 This repository contains implementations of fundamental data structures including Stack, Queue, Tree, and LinkedList.
 - Stack: Implements basic stack operations such as push and pop.
 - Queue: Includes enqueue and dequeue operations.
