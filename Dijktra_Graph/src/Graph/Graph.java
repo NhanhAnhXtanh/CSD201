@@ -39,18 +39,15 @@ public class Graph {
 
     //dijkstra
     public static void dijkstra(int[][] graph, int start, int end) {
-        int n = graph.length; // Số lượng đỉnh trong đồ thị
-        int[] dist = new int[n]; // Khoảng cách ngắn nhất từ start đến các đỉnh khác
-        boolean[] checked = new boolean[n]; // Đánh dấu đỉnh đã duyệt
-        int[] predecessor = new int[n]; // Đỉnh trước trong đường đi ngắn nhất
+        int n = graph.length;
+        int[] dist = new int[n];
+        boolean[] checked = new boolean[n]; 
+        int[] predecessor = new int[n]; 
 
-        // Khởi tạo khoảng cách ban đầu
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[start] = 0;
 
-        // Duyệt tất cả các đỉnh
         for (int i = 0; i < n; i++) {
-            // Chọn đỉnh u với khoảng cách nhỏ nhất trong các đỉnh chưa được duyệt
             int u = -1;
             for (int j = 0; j < n; j++) {
                 if (!checked[j] && (u == -1 || dist[j] < dist[u])) {
@@ -58,17 +55,14 @@ public class Graph {
                 }
             }
 
-            // Nếu khoảng cách ngắn nhất là vô hạn, kết thúc quá trình
             if (dist[u] == Integer.MAX_VALUE) {
                 break;
             }
 
-            // Đánh dấu đỉnh u đã được duyệt
             checked[u] = true;
 
-            // Cập nhật khoảng cách cho các đỉnh kề với u
             for (int v = 0; v < n; v++) {
-                if (graph[u][v] != 0 && !checked[v]) { // Kiểm tra có cạnh nối
+                if (graph[u][v] != 0 && !checked[v]) {
                     int newDist = dist[u] + graph[u][v];
                     if (newDist < dist[v]) {
                         dist[v] = newDist;
@@ -78,10 +72,8 @@ public class Graph {
             }
         }
 
-        // In kết quả khoảng cách ngắn nhất đến đỉnh end
         System.out.println("Khoảng cách ngắn nhất từ đỉnh " + start + " đến đỉnh " + end + " là: " + dist[end]);
 
-        // In đường đi ngắn nhất
         System.out.print("Đường đi: ");
         printPath(predecessor, start, end);
     }
